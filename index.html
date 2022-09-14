@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consume</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>STUDENT</h1>
+    <ul>
+        <li id="li"></li>
+    </ul>
+
+    <script type="text/javascript">
+        const url = "http://localhost:8080/api/student"
+        $.ajax({
+            type: "get",
+            url: url,
+            dataType: "json",
+            success: function (response) {
+                const data = response.data
+                $.each(data, function (indexInArray, valueOfElement) { 
+                    console.log(indexInArray, valueOfElement.name); 
+                    $("#li").val(valueOfElement.name)
+                });
+                
+            }
+        });
+    </script>
+</body>
+</html>
